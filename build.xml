@@ -12,6 +12,9 @@
     <property name="sonar.projectName" value="Demo" />
     <property name="sonar.sources" value="src" />
 
+    <property name="sonar.binaries" value="target" />
+	<property name="sonar.sourceEncoding" value="UTF-8" />
+    <property name="sonar.projectVersion" value="1.0" />
 
 <target name="sonar">
     <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
