@@ -8,7 +8,7 @@
     <property name="web.home"      value="${basedir}/web"/>
 
     <property name="sonar.host.url" value="http://44.199.241.199:9000" />
-    <property name="sonar.projectKey" value="org.sonarqube:sonarqube-scanner-ant" />
+    <property name="sonar.projectKey" value="squ_6261fda8d05bf88d063eb9417d64386d08d9494e" />
     <property name="sonar.projectName" value="Demo" />
     <property name="sonar.sources" value="src" />
 
