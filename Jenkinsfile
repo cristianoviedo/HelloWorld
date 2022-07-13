@@ -12,7 +12,7 @@ pipeline {
         stage('Scan') { 
             steps {
                 withSonarQubeEnv('sonarqube'){
-                    sh '/opt/apache-ant-1.10.12/bin/ant sonar' 
+                    sh '/opt/apache-ant-1.10.12/bin/ant sonar -Dsonar.login=squ_6261fda8d05bf88d063eb9417d64386d08d9494e' 
                 }
             }
         }
