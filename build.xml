@@ -1,0 +1,89 @@
+<project name="My Project" default="help" basedir=".">
+    <!-- Define the properties used by the build -->
+    <property name="app.name"      value="HelloWorld"/>
+    <property name="tcserver.home" value="${basedir}/lib" />
+    <property name="work.home"    value="${basedir}/work"/>
+    <property name="dist.home"     value="${basedir}/deploy"/>
+    <property name="src.home"      value="${basedir}/src"/>
+    <property name="web.home"      value="${basedir}/web"/>
+
+    <property name="sonar.host.url" value="http://44.199.241.199:9000" />
+    <property name="sonar.projectKey" value="squ_6261fda8d05bf88d063eb9417d64386d08d9494e" />
+    <property name="sonar.projectName" value="Demo" />
+    <property name="sonar.sources" value="src" />
+
+
+<target name="sonar">
+    <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+        <!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+        <classpath path="/opt/apache-ant-1.10.12/lib/sonarqube-ant-task-*.jar" />
+    </taskdef>
+ 
+    <!-- Execute SonarScanner for Ant Analysis -->
+    <sonar:sonar />
+</target>
+    
+    <target name="help">
+        <echo>You can use the following targets:</echo>
+        <echo> </echo>
+        <echo>  help    : (default) Prints this message </echo>
+        <echo>  all     : Cleans, compiles, and packages application</echo>
+        <echo>  clean   : Deletes work directories</echo>
+        <echo>  compile : Compiles servlets into class files</echo>
+        <echo>  dist    : Packages artifacts into a deployable WAR</echo>
+        <echo></echo>
+        <echo>For example, to clean, compile, and package all at once, run:</echo>
+        <echo>prompt> ant all </echo>
+    </target>
+    
+    <!-- Define the CLASSPATH -->
+    <path id="compile.classpath">
+        <fileset dir="${tcserver.home}/">
+            <include name="*.jar"/>
+        </fileset>
+        <pathelement location="${tcserver.home}/"/>
+        <fileset dir="${tcserver.home}/">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+    
+    <target name="all" depends="clean,compile,dist"
+    description="Clean work dirs, then compile and create a WAR"/>
+    
+    <target name="clean"
+        description="Delete old work and dist directories">
+        <delete dir="${work.home}"/>
+        <delete dir="${dist.home}"/>
+    </target>
+    
+    <target name="prepare" depends="clean"
+        description="Create working dirs and copy static files to work dir">
+        <mkdir  dir="${dist.home}"/>
+        <mkdir  dir="${work.home}/WEB-INF/classes"/>
+        <!-- Copy static HTML and JSP files to work dir -->
+        <copy todir="${work.home}">
+            <fileset dir="${web.home}"/>
+        </copy>
+    </target>
+    
+    <target name="compile" depends="prepare"
+        description="Compile Java sources and copy to WEB-INF/classes dir">
+        <javac srcdir="${src.home}"
+            includeantruntime="false"
+            destdir="${work.home}/WEB-INF/classes">
+            <classpath refid="compile.classpath"/>
+        </javac>
+        <copy  todir="${work.home}/WEB-INF/classes">
+            <fileset dir="${src.home}" excludes="**/*.java"/>
+        </copy>
+        
+    </target>
+    
+    
+    <target name="dist" depends="compile"
+        description="Create WAR file for binary distribution">
+        <jar jarfile="${dist.home}/${app.name}.war"
+        basedir="${work.home}"/>
+    </target>
+    
+</project>
