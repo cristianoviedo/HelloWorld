@@ -1,4 +1,4 @@
-<project name="My Project" default="help" basedir=".">
+<project name="My Project" default="help" basedir="." xmlns:sonar="antlib:org.sonar.ant">
     <!-- Define the properties used by the build -->
     <property name="app.name"      value="HelloWorld"/>
     <property name="tcserver.home" value="${basedir}/lib" />
