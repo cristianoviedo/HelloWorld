@@ -11,7 +11,7 @@ pipeline {
         stage('Scan') { 
             steps {
                 withSonarQubeEnv('sonarqube'){
-                    sh 'mvn sonar:sonar' 
+                    sh '/opt/apache-ant-1.10.12/bin/ant sonar' 
                 }
             }
         }
