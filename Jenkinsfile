@@ -13,7 +13,7 @@ pipeline {
              
           deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://44.199.226.246:9090/')], contextPath: 'HelloWorld', onFailure: false, war: '**/*.war' 
             echo "deploy ok";
-         //   cleanWs()
+            cleanWs()
       }
     }
         
