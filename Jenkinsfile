@@ -10,7 +10,7 @@ pipeline {
         stage ('Deploy') {
             steps {
              
-          deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'http://44.199.226.246:9090')], contextPath: 'HelloWorld', onFailure: false, war: '**/*.war' 
+          deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'http://44.199.226.246:9090/')], contextPath: 'HelloWorld', onFailure: false, war: '**/*.war' 
             echo "deploy ok";
       }
     }
