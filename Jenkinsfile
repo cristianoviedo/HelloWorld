@@ -12,7 +12,7 @@ pipeline {
         
         stage('Deploy') { 
             steps{
-                sh "copy target//HelloWorld.war /"/opt/tomcat/apache-tomcat/webapps//HelloWorld.war/""
+                sh "copy target//HelloWorld.war /"opt/tomcat/apache-tomcat/webapps//HelloWorld.war/""
                }
         }
        
