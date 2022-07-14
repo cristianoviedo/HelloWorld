@@ -10,6 +10,14 @@ pipeline {
             }
         }
         
+         stage('Compile-Package-create-war-file'){
+            // Get maven home path
+             steps{
+            def mvnHome =  tool name: 'maven', type: 'maven'   
+            sh "${mvnHome}/bin/mvn package"
+            }
+          }
+        
         stage('Deploy') { 
             steps{
                 sh "copy target//HelloWorld.war /"/opt/tomcat/apache-tomcat/webapps//HelloWorld.war/""
