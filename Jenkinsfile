@@ -10,7 +10,7 @@ pipeline {
         stage ('Deploy') {
             steps {
                 script {
-          deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'http://44.199.226.246:9090')], contextPath: '/var/lib/jenkins/workspace/FirstPipeline/deploy/HelloWorld.war/', onFailure: false, war: '/FirstPipeline/deploy/HelloWorld.war' 
+          deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'http://44.199.226.246:9090')], contextPath: '/var/lib/jenkins/workspace/FirstPipeline/deploy/HelloWorld.war/', onFailure: false, war: 'HelloWorld.war' 
         }
       }
     }
