@@ -6,7 +6,7 @@ pipeline {
                 echo "Esto es el build"
                 echo "agrego otra linea"
                 echo "Nueva linea"
-                sh '/opt/apache-ant-1.10.12/bin/ant all'
+               // sh '/opt/apache-ant-1.10.12/bin/ant all'
             }
         }
         
