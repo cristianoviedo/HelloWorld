@@ -13,10 +13,7 @@ pipeline {
         stage('Deploy') { 
             sh "copy target//HelloWorld.war /"/opt/tomcat/apache-tomcat/webapps//HelloWorld.war/""
         }
-            steps {
-                echo "Este es el deploy"
-            }
-        
+       
         
         stage('Scan') { 
             steps {
