@@ -11,7 +11,7 @@ pipeline {
         stage ('Deploy') {
             steps {
              
-          deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://44.199.226.246:9090/')], contextPath: 'HelloWorld', onFailure: false, war: '**/*.war' 
+          deploy adapters: [tomcat9(credentialsId: 'tomcatJJ', path: '', url: 'http://3.208.87.0:8080/')], contextPath: 'HelloWorld', onFailure: false, war: '**/*.war' 
             echo "deploy ok";
             cleanWs()
       }
