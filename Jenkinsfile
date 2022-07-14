@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo "Este es el deploy"
             }
-        } 
+        
         
         stage('Scan') { 
             steps {
@@ -30,5 +30,5 @@ pipeline {
                 echo "Este es el test"
             }
         }
-
+      } 
     }
