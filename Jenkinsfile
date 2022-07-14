@@ -11,7 +11,8 @@ pipeline {
         }
         
         stage('Deploy') { 
-            bat "copy target//HelloWorld.war /"/opt/tomcat/apache-tomcat/webapps//HelloWorld.war/"
+            bat "copy target//HelloWorld.war /"/opt/tomcat/apache-tomcat/webapps//HelloWorld.war/""
+        }
             steps {
                 echo "Este es el deploy"
             }
