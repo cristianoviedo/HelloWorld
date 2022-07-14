@@ -1,11 +1,11 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') { 
-            steps {
-               sh '/opt/apache-ant-1.10.12/bin/ant all'
-            }
-        }
+        //stage('Build') { 
+         //   steps {
+          //     sh '/opt/apache-ant-1.10.12/bin/ant all'
+           // }
+        //}
         
         stage ('Deploy') {
             steps {
